@@ -23,17 +23,17 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "6.1.0",
+    "node": ">6.1.0",
     "npm": "3.9.2"
   },
   "dependencies": {
-    "bignumber.js": "2.4.0",
-    "lodash": "4.13.1",
-    "moment": "2.14.1",
-    "na-gaussian-elimination": "0.0.4",
-    "node-wifi-scanner": "1.0.0",
-    "serialport": "4.0.1",
-    "usb-detection": "1.4.0",
-    "winston": "2.2.0"
+    "bignumber.js": "9.1.1",
+    "lodash": "4.17.21",
+    "moment": "2.29.4",
+    "na-gaussian-elimination": "1.0.0",
+    "node-wifi-scanner": "1.1.2-np",
+    "serialport": "10.5.0",
+    "usb-detection": "4.14.1",
+    "winston": "2.4.7"
   }
 }
