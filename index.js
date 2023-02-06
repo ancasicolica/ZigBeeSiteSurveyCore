@@ -3,24 +3,23 @@
  * is the same for the web- and app-version.
  *
  */
-const _ = require('lodash');
-const util = require('util');
-const EventEmitter = require('events').EventEmitter;
-
-const loggerLib = require('./lib/logger');
-const rapidConnector = require('./lib/rapidConnector');
+const _                   = require('lodash');
+const util                = require('util');
+const EventEmitter        = require('events').EventEmitter;
+const loggerLib           = require('./lib/logger');
+const rapidConnector      = require('./lib/rapidConnector');
 const determineDongleType = require('./lib/tasks/determineDongleType');
-const scanner = require('./lib/scanner');
-const networkPool = require('./lib/networkPool');
-const networkScanRequest = require('./lib/tasks/networkScanRequest');
-const resetModule = require('./lib/tasks/resetModule');
-const spectrumChart = require('./lib/spectrumChart');
-const wifiScanner = require('./lib/wifiScanner');
+const scanner             = require('./lib/scanner');
+const networkPool         = require('./lib/networkPool');
+const networkScanRequest  = require('./lib/tasks/networkScanRequest');
+const resetModule         = require('./lib/tasks/resetModule');
+const spectrumChart       = require('./lib/spectrumChart');
+const wifiScanner         = require('./lib/wifiScanner');
 
 // The interface class
 function SurveyCore() {
   this.logger = loggerLib.getLogger('core');
-  var self = this;
+  let self    = this;
 
   rapidConnector.on('open', function () {
     determineDongleType.run();
@@ -32,16 +31,17 @@ function SurveyCore() {
   function connect() {
     rapidConnector.connectToRapid(err => {
       if (err) {
-      //  _.delay(connect, 1000);
+        //  _.delay(connect, 1000);
       }
     });
   }
+
   _.delay(connect, 500);
 
   rapidConnector.on('usbConnected', device => {
     self.emit('usbConnected', device);
   });
-  rapidConnector.on('usbDisconnected', device => {
+  rapidConnector.on('usbDisconnected', () => {
     self.emit('usbDisconnected');
   });
   rapidConnector.on('ready', info => {
@@ -81,7 +81,7 @@ SurveyCore.prototype.getNetworkPool = function () {
 /**
  * Check which dongle is inserted (start detection)
  */
-SurveyCore.prototype.determineDongleType = function() {
+SurveyCore.prototype.determineDongleType = function () {
   determineDongleType.run();
 };
 /**
@@ -110,14 +110,14 @@ SurveyCore.prototype.resetDongle = function (callback) {
  * @param id
  * @returns {*|{fatal, error, info, warn, debug}}
  */
-SurveyCore.prototype.getLogger = function(id) {
+SurveyCore.prototype.getLogger = function (id) {
   return loggerLib.getLogger(id);
 };
 /**
  * Creates a spectrum chart
  * @param data
  */
-SurveyCore.prototype.createSpectrumChart = function(data) {
+SurveyCore.prototype.createSpectrumChart = function (data) {
   return spectrumChart(data);
 };
 /**
@@ -127,12 +127,10 @@ SurveyCore.prototype.createSpectrumChart = function(data) {
 SurveyCore.prototype.scanWifi = wifiScanner.scan;
 
 
-var surveyCore = new SurveyCore();
+const surveyCore = new SurveyCore();
 
 module.exports = function (settings) {
-
   loggerLib.setSettings(_.get(settings, 'logger', {}));
-  var logger = loggerLib.getLogger('core');
-
+  loggerLib.getLogger('core');
   return surveyCore;
 };
