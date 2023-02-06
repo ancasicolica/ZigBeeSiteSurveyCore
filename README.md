@@ -1,4 +1,4 @@
-#ZigBee Site Survey Core
+# ZigBee Site Survey Core
 
 This is the core functionality both used in the ZigBee Site Survey Web
 tool and the ZigBee Site Survey App.
