@@ -1,6 +1,6 @@
 {
   "name": "zigbee-survey-core",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Node ZigBee Survey Core",
   "productName": "ZigBee Site Survey",
   "description": "Check the ZigBee network data using MMBs RapidConnect, core module only",
@@ -14,17 +14,17 @@
   "author": {
     "name": "Christian Kuster, CH-8342 Wernetshausen",
     "email": "christian@kusti.ch",
-    "url": "http://www.kusti.ch/"
+    "url": "https://www.kusti.ch/"
   },
-  "homepage": "http://ancasicolica.github.io/ZigBeeSiteSurveyCore/",
+  "homepage": "https://ancasicolica.github.io/ZigBeeSiteSurveyCore/",
   "repository": {
     "type": "git",
     "url": "https://github.com/ancasicolica/ZigBeeSiteSurveyCore.git"
   },
   "license": "MIT",
   "engines": {
-    "node": ">6.1.0",
-    "npm": "3.9.2"
+    "node": ">16.0.0",
+    "npm": ">8.0.0"
   },
   "dependencies": {
     "bignumber.js": "9.1.1",
